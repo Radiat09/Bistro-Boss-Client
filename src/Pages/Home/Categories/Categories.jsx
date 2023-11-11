@@ -27,9 +27,9 @@ const Categories = () => {
         className="mySwiper mt-20 max-w-7xl mx-auto"
       >
         <SwiperSlide>
-          <div className="">
+          <div className="relative">
             <img src={slide1} className="w-full h-full" alt="" />
-            <h4 className="md:text-4xl uppercase text-white text-center">
+            <h4 className="md:text-4xl uppercase text-white absolute bottom-8 md:bottom-12 left-[40%]">
               Salad
             </h4>
           </div>
@@ -37,7 +37,7 @@ const Categories = () => {
         <SwiperSlide>
           <div className="">
             <img src={slide2} className="w-full h-full" alt="" />
-            <h4 className="md:text-4xl uppercase text-white -mt-36 text-center">
+            <h4 className="md:text-4xl uppercase text-white  absolute bottom-8 md:bottom-12 left-[40%]">
               Pizza
             </h4>
           </div>
@@ -45,7 +45,7 @@ const Categories = () => {
         <SwiperSlide>
           <div className="">
             <img src={slide3} className="w-full h-full" alt="" />
-            <h4 className="md:text-4xl uppercase text-white -mt-36 text-center">
+            <h4 className="md:text-4xl uppercase text-white absolute bottom-8 md:bottom-12 left-[40%]">
               Soup
             </h4>
           </div>
@@ -53,7 +53,7 @@ const Categories = () => {
         <SwiperSlide>
           <div className="">
             <img src={slide4} className="w-full h-full" alt="" />
-            <h4 className="md:text-4xl uppercase text-white -mt-36 text-center">
+            <h4 className="md:text-4xl uppercase text-white  absolute bottom-8 md:bottom-12 left-[35%]">
               Dessert
             </h4>
           </div>
@@ -61,7 +61,7 @@ const Categories = () => {
         <SwiperSlide>
           <div className="">
             <img src={slide5} className="w-full h-full" alt="" />
-            <h4 className="md:text-4xl uppercase text-white -mt-36 text-center">
+            <h4 className="md:text-4xl uppercase text-white  absolute bottom-8 md:bottom-12 left-[40%]">
               Salad
             </h4>
           </div>

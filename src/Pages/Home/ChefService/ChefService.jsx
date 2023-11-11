@@ -8,7 +8,7 @@ const ChefService = () => {
         className="w-full"
         alt="an image of a chef giving service"
       />
-      <div className="bg-white text-black w-[80%] mx-auto md:absolute top-[15%] left-[10%] md:p-20 p-5">
+      <div className="bg-white text-black md:w-[80%] mx-auto md:absolute top-[15%] left-[10%] md:p-20 p-5">
         <h2 className="text-5xl text-center mb-3">Bistro Boss</h2>
         <div className="xl:w-[762px] text-center mx-auto">
           Lorem ipsum dolor sit amet consectetur adipisicing elit.

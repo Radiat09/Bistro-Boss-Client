@@ -4,7 +4,7 @@ import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 const FeaturedItem = () => {
   return (
     <div
-      className="hero min-h-[80vh] my-40"
+      className="hero min-h-[80vh] my-40 bg-fixed"
       style={{
         backgroundImage: `url(${featured})`,
       }}
@@ -29,7 +29,7 @@ const FeaturedItem = () => {
                 quasi. Eaque repellat recusandae ad laudantium tempore
                 consequatur consequuntur omnis ullam maxime tenetur.
               </p>
-              <button className="btn border-t-0 border-r-0 border-l-0 text-white bg-transparent rounded-b-xl border-b-4 hover:btn-neutral">
+              <button className="btn border-0 text-white bg-transparent rounded-b-xl border-b-4 hover:border hover:bg-transparent">
                 Read More
               </button>
             </div>
