@@ -1,4 +1,4 @@
-import FoodCard from "../../../components/FoodCard/FoodCard";
+import FoodCardStatic from "../../../components/FoodCard/FoodCardStatic";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 
 const ChefRecomends = () => {
@@ -9,9 +9,9 @@ const ChefRecomends = () => {
         subHeading="Should try"
       ></SectionTitle>
       <div className="grid lg:grid-cols-3 gap-4">
-        <FoodCard></FoodCard>
-        <FoodCard></FoodCard>
-        <FoodCard></FoodCard>
+        <FoodCardStatic></FoodCardStatic>
+        <FoodCardStatic></FoodCardStatic>
+        <FoodCardStatic></FoodCardStatic>
       </div>
     </div>
   );

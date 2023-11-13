@@ -1,19 +1,33 @@
-import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../../provider/AuthProvider";
+import defaultProImg from "../../../assets/others/profile.png";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+
   const NavLinks = (
     <>
-      <li>
-        <NavLink to="/">Home</NavLink>
+      <li className="font-bold text-xl ">
+        <NavLink className="text-white" to="/">
+          Home
+        </NavLink>
       </li>
-      <li>
-        <NavLink to="/ourmenu">Our Menu</NavLink>
+      <li className="font-bold text-xl ">
+        <NavLink className="text-white" to="/ourmenu">
+          Our Menu
+        </NavLink>
+      </li>
+      <li className="font-bold text-xl ">
+        <NavLink className="text-white" to="/order/salad">
+          Order
+        </NavLink>
       </li>
     </>
   );
   return (
     <div className="">
-      <div className="navbar fixed z-50 bg-black bg-opacity-50 text-white">
+      <div className="navbar fixed z-50 bg-black bg-opacity-50 text-white lg:px-20">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -39,13 +53,36 @@ const Navbar = () => {
               {NavLinks}
             </ul>
           </div>
-          <a className="btn btn-ghost normal-case text-xl">Bistro Boss</a>
+          <Link to="/" className="flex flex-col uppercase">
+            <span className="text-3xl font-black">Bistro Boss</span>
+            <span className="text-2xl font-bold tracking-[5px]">
+              Restaurant
+            </span>
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{NavLinks}</ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Button</a>
+          {user ? (
+            <div className="flex justify-center items-center gap-2">
+              <img
+                src={defaultProImg}
+                className="w-10 rounded-full cursor-pointer"
+                alt="image of logged user"
+              />
+              <Link
+                onClick={logOut}
+                className="font-bold text-xl text-white link-hover"
+              >
+                Sign out
+              </Link>
+            </div>
+          ) : (
+            <Link to="/login" className="font-bold text-xl text-white">
+              Login
+            </Link>
+          )}
         </div>
       </div>
     </div>

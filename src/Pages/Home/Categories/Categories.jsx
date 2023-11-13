@@ -17,6 +17,7 @@ const Categories = () => {
         subHeading={"From 11:00am to 10:00pm"}
       ></SectionTitle>
       <Swiper
+        loop={"true"}
         slidesPerView={3}
         spaceBetween={30}
         centeredSlides={true}

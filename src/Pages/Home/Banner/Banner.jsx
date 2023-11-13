@@ -9,10 +9,10 @@ import img6 from "../../../assets/home/06.png";
 
 const Banner = () => {
   return (
-    <div className="">
+    <div className="text-center">
       <Carousel
         stopOnHover="false"
-        showStatus="false"
+        showStatus={"false"}
         infiniteLoop="true"
         autoPlay="true"
         interval={3000}

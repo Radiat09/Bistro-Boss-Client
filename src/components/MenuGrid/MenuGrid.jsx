@@ -2,6 +2,7 @@ import SectionTitle from "../SectionTitle/SectionTitle";
 import UseMenu from "../../hooks/UseMenu/UseMenu";
 import MenuItem from "../MenuItem/MenuItem";
 import ButtonCus from "../ButtonCus/ButtonCus";
+import { Link } from "react-router-dom";
 
 const MenuGrid = ({ fetchData, secTitle, secSubTitle, buttonTxt }) => {
   const [menu] = UseMenu(fetchData);
@@ -13,7 +14,9 @@ const MenuGrid = ({ fetchData, secTitle, secSubTitle, buttonTxt }) => {
           <MenuItem key={menuItem._id} menuItem={menuItem}></MenuItem>
         ))}
       </div>
-      <ButtonCus btnText={buttonTxt}></ButtonCus>
+      <Link to={`/order/${fetchData}`}>
+        <ButtonCus btnText={buttonTxt}></ButtonCus>
+      </Link>
     </section>
   );
 };
