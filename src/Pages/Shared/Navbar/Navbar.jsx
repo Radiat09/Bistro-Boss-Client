@@ -2,9 +2,12 @@ import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../provider/AuthProvider";
 import defaultProImg from "../../../assets/others/profile.png";
+import cartImg from "../../../assets/icon/pngwing.com.png";
+import useCart from "../../../hooks/useCart/useCart";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const [carts] = useCart();
 
   const NavLinks = (
     <>
@@ -21,6 +24,11 @@ const Navbar = () => {
       <li className="font-bold text-xl ">
         <NavLink className="text-white" to="/order/salad">
           Order
+        </NavLink>
+      </li>
+      <li className="font-bold text-xl ">
+        <NavLink className="text-white" to="/contactus">
+          Contact Us
         </NavLink>
       </li>
     </>
@@ -65,18 +73,33 @@ const Navbar = () => {
         </div>
         <div className="navbar-end">
           {user ? (
-            <div className="flex justify-center items-center gap-2">
-              <img
-                src={defaultProImg}
-                className="w-10 rounded-full cursor-pointer"
-                alt="image of logged user"
-              />
-              <Link
-                onClick={logOut}
-                className="font-bold text-xl text-white link-hover"
-              >
-                Sign out
+            <div className="flex items-center gap-8">
+              <Link to="/dashboard/mycart">
+                <div className="indicator cursor-pointer">
+                  <span className="indicator-item badge badge-secondary">
+                    {carts?.length}
+                  </span>
+                  <img
+                    src={cartImg}
+                    className="w-10"
+                    alt="an image icon of cart"
+                  />
+                </div>
               </Link>
+
+              <div className="flex justify-center items-center gap-2">
+                <img
+                  src={defaultProImg}
+                  className="w-10 rounded-full cursor-pointer"
+                  alt="image of logged user"
+                />
+                <Link
+                  onClick={logOut}
+                  className="font-bold text-xl text-white link-hover"
+                >
+                  Sign out
+                </Link>
+              </div>
             </div>
           ) : (
             <Link to="/login" className="font-bold text-xl text-white">
