@@ -8,6 +8,8 @@ import Register from "../Pages/Register/Register";
 import Dashboard from "../Layout/Dashboard";
 import MyCart from "../Pages/MyCart/MyCart";
 import ContactUs from "../Pages/ContactUs/ContactUs";
+import ContactWay from "../Pages/Shared/ContactWay/ContactWay";
+import AllUsers from "../Pages/AllUsers/AllUsers";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -46,6 +48,14 @@ export const router = createBrowserRouter([
       {
         path: "mycart",
         element: <MyCart></MyCart>,
+      },
+      {
+        path: "contactUs",
+        element: <ContactWay></ContactWay>,
+      },
+      {
+        path: "allUsers",
+        element: <AllUsers></AllUsers>,
       },
     ],
   },

@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const ContactCard = ({ icon, mainText, subText1, subText2 }) => {
   return (
     <div className="grid grid-cols-1 items-center text-center border">
@@ -13,4 +15,10 @@ const ContactCard = ({ icon, mainText, subText1, subText2 }) => {
   );
 };
 
+ContactCard.propTypes = {
+  icon: PropTypes.node,
+  mainText: PropTypes.string,
+  subText1: PropTypes.string,
+  subText2: PropTypes.string,
+};
 export default ContactCard;

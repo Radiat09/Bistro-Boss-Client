@@ -1,7 +1,7 @@
 import registerImg from "../../assets/others/authentication2.png";
 import registerImgBg from "../../assets/others/authentication.png";
 import { Link, useNavigate } from "react-router-dom";
-
+import useAxiosPublic from "../../hooks/useAxios/useAxiosPublic";
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import { useForm } from "react-hook-form";
@@ -9,11 +9,13 @@ import Swal from "sweetalert2";
 
 const Register = () => {
   const navigate = useNavigate();
-  const { createUser, updateUser } = useContext(AuthContext);
+  const axiosPublic = useAxiosPublic();
+  const { createUser, updateUser, googleSignIn } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
   const onSubmit = (data) => {
     console.log(data);
@@ -22,20 +24,46 @@ const Register = () => {
       .then((res) => {
         console.log(res.user);
         updateUser(data.name)
-          .then((res) => {
-            console.log("user Profile Updated", res);
-            navigate("/");
+          .then(() => {
+            // console.log("user Profile Updated", res);
+
+            const userInfo = {
+              name: data.name,
+              email: data.email,
+              role: "guest",
+            };
+            axiosPublic.post("/users", userInfo).then((res) => {
+              console.log(res.data);
+              if (res.data.insertedId) {
+                reset();
+                Swal.fire("Register Successfull!");
+                navigate("/");
+              }
+            });
           })
           .catch((err) => {
             console.log(err);
           });
-        Swal.fire("Login Successfull!");
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
+  const handleGoogleLogin = () => {
+    googleSignIn().then((res) => {
+      console.log(res.user);
+      const userInfo = {
+        email: res.user?.email,
+        name: res.user?.displayName,
+        role: "guest",
+      };
+      axiosPublic.post("/users", userInfo).then((res) => {
+        console.log(res.data);
+        navigate("/");
+      });
+    });
+  };
   return (
     <div
       style={{
@@ -144,7 +172,11 @@ const Register = () => {
                     />
                   </svg>
                 </div>
-                <div className="w-fit rounded-full p-3 cursor-pointer border-2 hover:bg-gray-300">
+                {/* Google */}
+                <div
+                  onClick={handleGoogleLogin}
+                  className="w-fit rounded-full p-3 cursor-pointer border-2 hover:bg-gray-300"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"

@@ -6,7 +6,7 @@ import useAxios from "../../hooks/useAxios/useAxios";
 const MyCart = () => {
   const [carts, refetch] = useCart();
   const axi = useAxios();
-  const totalPrice = carts.reduce((acc, item) => {
+  const totalPrice = carts?.reduce((acc, item) => {
     return acc + item.price;
   }, 0);
 
@@ -40,7 +40,7 @@ const MyCart = () => {
     <div className="max-w-6xl mx-auto mt-40">
       <div className="flex justify-between">
         <h3 className="uppercase text-3xl font-bold">
-          Total Orders: {carts.length}
+          Total Orders: {carts?.length}
         </h3>
         <h3 className="uppercase text-3xl font-bold">
           Total Price: ${totalPrice}
@@ -65,7 +65,7 @@ const MyCart = () => {
             <tbody>
               {/* row 1 */}
 
-              {carts.map((item, idx) => (
+              {carts?.map((item, idx) => (
                 <tr key={item._id}>
                   <th>
                     <label>{idx + 1}</label>

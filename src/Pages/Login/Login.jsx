@@ -9,11 +9,13 @@ import {
 import { useContext, useEffect, useRef } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../hooks/useAxios/useAxiosPublic";
 
 const Login = () => {
+  const axiosPublic = useAxiosPublic();
   const location = useLocation();
   const navigate = useNavigate();
-  const { emailPassSignIn } = useContext(AuthContext);
+  const { emailPassSignIn, googleSignIn } = useContext(AuthContext);
   const captchaRef = useRef();
 
   const from = location.state?.from?.pathname || "/";
@@ -42,6 +44,21 @@ const Login = () => {
       .catch((err) => {
         console.log(err);
       });
+  };
+
+  const handleGoogleLogin = () => {
+    googleSignIn().then((res) => {
+      console.log(res);
+      const userInfo = {
+        email: res.user?.email,
+        name: res.user?.displayName,
+        role: "guest",
+      };
+      axiosPublic.post("/users", userInfo).then((res) => {
+        console.log(res.data);
+        navigate("/");
+      });
+    });
   };
   return (
     <div
@@ -125,7 +142,11 @@ const Login = () => {
                     />
                   </svg>
                 </div>
-                <div className="w-fit rounded-full p-3 cursor-pointer border-2 hover:bg-gray-300">
+                {/* Google */}
+                <div
+                  onClick={handleGoogleLogin}
+                  className="w-fit rounded-full p-3 cursor-pointer border-2 hover:bg-gray-300"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
