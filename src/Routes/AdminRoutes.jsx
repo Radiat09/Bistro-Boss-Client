@@ -3,7 +3,7 @@ import useAdmin from "../hooks/useAdmin/useAdmin";
 import useAuth from "../hooks/useAuth/useAuth";
 import PropTypes from "prop-types";
 
-const AdminRoutes = (children) => {
+const AdminRoutes = ({ children }) => {
   const { user, loading } = useAuth();
   const [isAdmin, isPending] = useAdmin();
   const location = useLocation();
@@ -13,7 +13,7 @@ const AdminRoutes = (children) => {
   if (user && isAdmin) {
     return children;
   }
-  return <Navigate to="/login" state={{ from: location }} replace></Navigate>;
+  return <Navigate to="/" state={{ from: location }} replace></Navigate>;
 };
 AdminRoutes.propTypes = {
   children: PropTypes.node,

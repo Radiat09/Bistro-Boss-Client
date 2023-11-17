@@ -18,17 +18,18 @@ import useAdmin from "../hooks/useAdmin/useAdmin";
 
 const Dashboard = () => {
   const [isAdmin, isPending] = useAdmin();
+  // console.log(isAdmin);
   return (
     <div className="flex">
       <div className="w-64 min-h-screen bg-[#D1A054]">
         <ul className="space-y-5 mt-10">
-          {/* {isLoading ? (
+          {/* {isPending ? (
             <div>
               <span className="loading loading-spinner text-warning"></span>
             </div>
           ) : (
             <> */}
-          {isAdmin ? (
+          {isAdmin === true ? (
             <>
               <li>
                 <NavLink
@@ -45,7 +46,7 @@ const Dashboard = () => {
               </li>
               <li>
                 <NavLink
-                  to="/dashboard/addItems"
+                  to="/dashboard/addItem"
                   className={({ isActive }) =>
                     isActive
                       ? "text-white text-xl font-medium flex items-center justify-start gap-1 ml-10"

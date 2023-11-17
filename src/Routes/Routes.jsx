@@ -10,6 +10,8 @@ import MyCart from "../Pages/MyCart/MyCart";
 import ContactUs from "../Pages/ContactUs/ContactUs";
 import ContactWay from "../Pages/Shared/ContactWay/ContactWay";
 import AllUsers from "../Pages/AllUsers/AllUsers";
+import AdminRoutes from "./AdminRoutes";
+import AddItem from "../Pages/AddItem/AddItem";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -55,7 +57,19 @@ export const router = createBrowserRouter([
       },
       {
         path: "allUsers",
-        element: <AllUsers></AllUsers>,
+        element: (
+          <AdminRoutes>
+            <AllUsers></AllUsers>
+          </AdminRoutes>
+        ),
+      },
+      {
+        path: "addItem",
+        element: (
+          <AdminRoutes>
+            <AddItem></AddItem>
+          </AdminRoutes>
+        ),
       },
     ],
   },
