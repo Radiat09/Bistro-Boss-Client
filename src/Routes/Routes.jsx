@@ -12,6 +12,8 @@ import ContactWay from "../Pages/Shared/ContactWay/ContactWay";
 import AllUsers from "../Pages/AllUsers/AllUsers";
 import AdminRoutes from "./AdminRoutes";
 import AddItem from "../Pages/AddItem/AddItem";
+import PrivateRoute from "./PrivateRoute";
+import ManageItems from "../Pages/ManageItems/ManageItems";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -45,7 +47,11 @@ export const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <Dashboard></Dashboard>,
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "mycart",
@@ -68,6 +74,14 @@ export const router = createBrowserRouter([
         element: (
           <AdminRoutes>
             <AddItem></AddItem>
+          </AdminRoutes>
+        ),
+      },
+      {
+        path: "manageItems",
+        element: (
+          <AdminRoutes>
+            <ManageItems></ManageItems>
           </AdminRoutes>
         ),
       },

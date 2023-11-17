@@ -3,6 +3,7 @@ import SectionTitle from "../../components/SectionTitle/SectionTitle";
 import { FaUtensils } from "react-icons/fa";
 import useAxiosPublic from "../../hooks/useAxios/useAxiosPublic";
 import useAxios from "../../hooks/useAxios/useAxios";
+import Swal from "sweetalert2";
 
 const imageBbApiKey = import.meta.env.VITE_IMAGEBB_APIKEY;
 const imageHostingAPi = `https://api.imgbb.com/1/upload?key=${imageBbApiKey}`;
@@ -36,6 +37,15 @@ const AddItem = () => {
       console.log(menuItem);
       const menuRes = await axi.post("/menu", menuItem);
       console.log(menuRes.data);
+      if (menuRes.data.insertedId) {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: `${data.name} has been added to menu.`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
     }
   };
   return (
