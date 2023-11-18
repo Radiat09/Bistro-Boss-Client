@@ -4,9 +4,11 @@ import useAxios from "../../hooks/useAxios/useAxios";
 import SectionTitle from "../../components/SectionTitle/SectionTitle";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../hooks/useAxios/useAxiosPublic";
+import { Link } from "react-router-dom";
 
 const ManageItems = () => {
   const axiosPUblic = useAxiosPublic();
+  const axi = useAxios();
 
   const { data: menu = [], refetch } = useQuery({
     queryKey: ["menu"],
@@ -54,12 +56,12 @@ const ManageItems = () => {
       confirmButtonText: "Yes, delete user!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosPUblic.delete(`/menu/${id}`).then((res) => {
+        axi.delete(`/menu/${id}`).then((res) => {
           console.log(res);
           if (res.data.deletedCount > 0) {
             Swal.fire({
               title: "Deleted!",
-              text: "The user has been deleted.",
+              text: "The Item has been deleted.",
               icon: "success",
             });
             refetch();
@@ -121,12 +123,11 @@ const ManageItems = () => {
                         {"Admin"}
                       </p>
                     ) : (
-                      <button
-                        onClick={() => handleUpdateUser(item._id)}
-                        className="btn bg-[#D1A054] text-white text-xl hover:text-[#D1A054]"
-                      >
-                        <FaEdit></FaEdit>
-                      </button>
+                      <Link to={`/dashboard/manageItems/${item._id}`}>
+                        <button className="btn bg-[#D1A054] text-white text-xl hover:text-[#D1A054]">
+                          <FaEdit></FaEdit>
+                        </button>
+                      </Link>
                     )}
                   </td>
                   <th>
