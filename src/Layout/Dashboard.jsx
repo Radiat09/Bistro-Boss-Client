@@ -1,4 +1,4 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import {
   FaBars,
   FaBook,
@@ -15,13 +15,35 @@ import {
 } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import useAdmin from "../hooks/useAdmin/useAdmin";
+import { useState } from "react";
 
 const Dashboard = () => {
   const [isAdmin, isPending] = useAdmin();
+  const [toggle, setToggle] = useState(true);
   // console.log(isAdmin);
   return (
     <div className="flex">
-      <div className="w-64 min-h-screen bg-[#D1A054]">
+      {/* <div className="flex justify-end lg:hidden">
+        <button onClick={() => setToggle(!toggle)} className="btn">
+          Button
+        </button>
+      </div> */}
+      <div
+        className={"w-64 fixed min-h-screen bg-[#D1A054]"}
+        //  ${
+        //   toggle
+        //     ? "md:left-0 md:transition-all md:duration-1000 md:z-50"
+        //     : "md:-left-[500px] md:transition-all md:duration-1000 md:z-50"
+        //   }
+      >
+        <div className="flex justify-center mt-10 mb-16">
+          <Link to="/" className="flex flex-col uppercase">
+            <span className="text-3xl font-black">Bistro Boss</span>
+            <span className="text-2xl font-bold tracking-[5px]">
+              Restaurant
+            </span>
+          </Link>
+        </div>
         <ul className="space-y-5 mt-10">
           {/* {isPending ? (
             <div>
@@ -238,7 +260,7 @@ const Dashboard = () => {
           </li>
         </ul>
       </div>
-      <div className="flex-1">
+      <div className="flex-1 ml-64">
         <Outlet className="bg-[#F6F6F6]"></Outlet>
       </div>
     </div>

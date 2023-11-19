@@ -15,6 +15,8 @@ import AddItem from "../Pages/AddItem/AddItem";
 import PrivateRoute from "./PrivateRoute";
 import ManageItems from "../Pages/ManageItems/ManageItems";
 import UpdateItem from "../Pages/UpdateItem/UpdateItem";
+import Payment from "../Pages/Payment/Payment";
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -57,6 +59,10 @@ export const router = createBrowserRouter([
       {
         path: "mycart",
         element: <MyCart></MyCart>,
+      },
+      {
+        path: "payment",
+        element: <Payment></Payment>,
       },
       {
         path: "contactUs",
