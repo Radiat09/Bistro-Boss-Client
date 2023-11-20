@@ -28,7 +28,7 @@ const useAxios = () => {
     },
     async (error) => {
       // console.log("status error in intercerptors", error);
-      const status = error.response.status;
+      const status = error.response?.status;
       if (status === 401 || status === 403 || status === 404) {
         await logOut();
         navigate("/login");

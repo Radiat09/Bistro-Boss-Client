@@ -65,7 +65,7 @@ const MyCart = () => {
         <div className="overflow-x-auto w-full">
           <table className="table w-full">
             {/* head */}
-            <thead>
+            <thead className="w-full text-xl text-white bg-[#D1A054] font-semibold rounded-xl">
               <tr>
                 <th>#</th>
                 <th>Item Image</th>
