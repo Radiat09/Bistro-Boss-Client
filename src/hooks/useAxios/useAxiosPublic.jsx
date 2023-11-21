@@ -1,9 +1,10 @@
 import axios from "axios";
 
 const axiosPublic = axios.create({
-  baseURL: "http://localhost:9000/api/v1",
+  baseURL: "https://bistro-boss-server-tau-six.vercel.app/api/v1",
 });
-
+//https://bistro-boss-server-tau-six.vercel.app/api/v1
+//https://bistro-boss-server-tau-six.vercel.app/api/v1
 const useAxiosPublic = () => {
   return axiosPublic;
 };

@@ -113,7 +113,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "manageItems/:id",
-        element: <UpdateItem></UpdateItem>,
+        element: (
+          <AdminRoutes>
+            <UpdateItem></UpdateItem>
+          </AdminRoutes>
+        ),
       },
     ],
   },
