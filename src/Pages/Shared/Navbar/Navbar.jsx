@@ -4,10 +4,12 @@ import { AuthContext } from "../../../provider/AuthProvider";
 import defaultProImg from "../../../assets/others/profile.png";
 import cartImg from "../../../assets/icon/pngwing.com.png";
 import useCart from "../../../hooks/useCart/useCart";
+import useAdmin from "../../../hooks/useAdmin/useAdmin";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const [carts] = useCart();
+  const [isAdmin] = useAdmin();
 
   const NavLinks = (
     <>
@@ -30,6 +32,18 @@ const Navbar = () => {
         <NavLink className="text-white" to="/contactus">
           Contact Us
         </NavLink>
+      </li>
+      <li className="font-bold text-xl ">
+        {user && isAdmin && (
+          <NavLink className="text-white" to="/dashboard/adminHome">
+            Dashboard
+          </NavLink>
+        )}
+        {user && !isAdmin && (
+          <NavLink className="text-white" to="/dashboard/userHome">
+            Dashboard
+          </NavLink>
+        )}
       </li>
     </>
   );

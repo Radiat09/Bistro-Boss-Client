@@ -15,27 +15,13 @@ import {
 } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import useAdmin from "../hooks/useAdmin/useAdmin";
-import { useState } from "react";
 
 const Dashboard = () => {
-  const [isAdmin, isPending] = useAdmin();
-  const [toggle, setToggle] = useState(true);
-  // console.log(isAdmin);
+  const [isAdmin] = useAdmin();
+
   return (
     <div className="flex">
-      {/* <div className="flex justify-end lg:hidden">
-        <button onClick={() => setToggle(!toggle)} className="btn">
-          Button
-        </button>
-      </div> */}
-      <div
-        className={"w-64 fixed min-h-screen bg-[#D1A054]"}
-        //  ${
-        //   toggle
-        //     ? "md:left-0 md:transition-all md:duration-1000 md:z-50"
-        //     : "md:-left-[500px] md:transition-all md:duration-1000 md:z-50"
-        //   }
-      >
+      <div className={"w-64 fixed min-h-screen bg-[#D1A054]"}>
         <div className="flex justify-center mt-10 mb-16">
           <Link to="/" className="flex flex-col uppercase">
             <span className="text-3xl font-black">Bistro Boss</span>
@@ -45,12 +31,6 @@ const Dashboard = () => {
           </Link>
         </div>
         <ul className="space-y-5 mt-10">
-          {/* {isPending ? (
-            <div>
-              <span className="loading loading-spinner text-warning"></span>
-            </div>
-          ) : (
-            <> */}
           {isAdmin === true ? (
             <>
               <li>
@@ -124,7 +104,7 @@ const Dashboard = () => {
             <>
               <li>
                 <NavLink
-                  to="/dashboard/uerHome"
+                  to="/dashboard/userHome"
                   className={({ isActive }) =>
                     isActive
                       ? "text-white text-xl font-medium flex items-center justify-start gap-1 ml-10"
